@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('full_names');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->date('subscription_start');
+            $table->date('start_at');
             $table->float('amount', 8, 2);
             $table->text('notes');
             $table->timestamps();
