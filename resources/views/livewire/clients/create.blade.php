@@ -40,10 +40,7 @@
                     <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
                     <x-jet-input id="phone" wire:model="phone" placeholder="Enter the phone number" class="block mt-1 w-full" type="text" name="name" :value="old('phone')" required autofocus />
                 </div>
-                <div>
-                    <x-jet-label for="location" value="{{ __('Address') }}" />
-                    <x-jet-input id="location" wire:model="location" placeholder="Where is the client located?" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autofocus />
-                </div>
+                
 
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">

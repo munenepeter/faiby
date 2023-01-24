@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Clients extends Component {
 
-    public $clients, $name, $email, $phone, $location, $notes,$start_at, $amount, $clientId, $updateClient = false, $addClient = false;
+    public $clients, $name, $email, $phone, $notes,$start_at, $amount, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -21,8 +21,7 @@ class Clients extends Component {
      */
     protected $rules = [
         'name' => 'required',
-        'email' => 'required',
-        'location' => 'required',
+        'email' => 'required', 
         'start_at' => 'required',
         'amount' => 'required',
         'phone' => 'required',
@@ -35,8 +34,7 @@ class Clients extends Component {
      */
     public function resetFields() {
         $this->name = '';
-        $this->email = '';
-        $this->location = '';
+        $this->email = ''; 
         $this->phone = '';
         $this->start_at = '';
         $this->amount = '';
@@ -69,10 +67,9 @@ class Clients extends Component {
         $this->validate();
         try {
             Client::create([
-                'name' => $this->name,
+                'full_names' => $this->name,
                 'email' => $this->email,
                 'phone' => $this->phone,
-                'location' => $this->location,
                 'start_at' => $this->start_at,
                 'amount' => $this->amount,
                 'notes' => $this->notes
@@ -98,8 +95,7 @@ class Clients extends Component {
                 session()->flash('error', 'Client not found');
             } else {
                 $this->name = $client->name;
-                $this->email = $client->email;
-                $this->location = $client->location;
+                $this->email = $client->email; 
                 $this->phone = $client->phone;
                 $this->notes = $client->notes;
                 $this->clientId = $client->id;
@@ -149,6 +145,7 @@ class Clients extends Component {
      * @return void
      */
     public function deleteClient($id) {
+        die;
         try {
             Client::find($id)->delete();
             session()->flash('success', "Client Deleted Successfully!!");
