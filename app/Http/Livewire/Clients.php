@@ -82,6 +82,7 @@ class Clients extends Component {
             $this->addClient = false;
         } catch (\Exception $ex) {
             session()->flash('error', 'Something goes wrong!!');
+            throw new \Exception($ex);
         }
     }
 
