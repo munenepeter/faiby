@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Clients extends Component {
 
-    public $clients, $plans, $name, $email, $phone, $notes,$start_at, $plan, $clientId, $updateClient = false, $addClient = false;
+    public $clients, $plans, $name, $email, $phone, $notes,$plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -23,7 +23,7 @@ class Clients extends Component {
     protected $rules = [
         'name' => 'required',
         'email' => 'required', 
-        'start_at' => 'required',
+        'plan_start_at' => 'required',
         'plan' => 'required',
         'phone' => 'required|min:9|numeric',
         'notes' => 'required'
@@ -37,7 +37,7 @@ class Clients extends Component {
         $this->name = '';
         $this->email = ''; 
         $this->phone = '';
-        $this->start_at = '';
+        $this->plan_start_at = '';
         $this->plan = '';
         $this->notes = '';
     }
@@ -72,7 +72,7 @@ class Clients extends Component {
                 'full_names' => $this->name,
                 'email' => $this->email,
                 'phone' => $this->phone,
-                'start_at' => $this->start_at,
+                'plan_start_at' => $this->plan_start_at,
                 'plan' => $this->plan,
                 'notes' => $this->notes
             ]);

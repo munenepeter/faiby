@@ -57,8 +57,8 @@
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="start_at" value="{{ __('Subscription Start') }}" />
-                    <x-jet-input id="start_at" wire:model="start_at" placeholder="Enter the phone number" class="block mt-1 w-full" type="date" name="start_at" :value="old('start_at')" required autofocus />
+                    <x-jet-label for="plan_start_at" value="{{ __('Subscription Start') }}" />
+                    <x-jet-input id="plan_start_at" wire:model="plan_start_at" placeholder="Enter the phone number" class="block mt-1 w-full" type="date" name="plan_start_at" :value="old('plan_start_at')" required autofocus />
                 </div>
 
 

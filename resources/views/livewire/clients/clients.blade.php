@@ -60,7 +60,7 @@
                             </td>
 
                             <td class="px-6 py-4">
-                                {{date("d F Y",strtotime('+1 month',strtotime($client->start_at)))}}
+                                {{date("d F Y",strtotime('+1 month',strtotime($client->plan_start_at)))}}
                             </td>
                             <td class="px-6 py-4">
                                 {{$client->plan}}
