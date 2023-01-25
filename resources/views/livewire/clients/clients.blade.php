@@ -62,7 +62,7 @@
                                 {{$client->plan_end_at}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->plan_id}}
+                                {{$client->plan->name}}
                             </td>
                             <td class="px-6 py-4">
                                 {{$client->status}}

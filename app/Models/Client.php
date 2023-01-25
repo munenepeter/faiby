@@ -11,6 +11,7 @@ class Client extends Model {
     protected $guarded = [];
 
     public function plan() {
-        return $this->hasOne(Plan::class);
+        return $this->belongsTo(Plan::class);
+        
     }
 }
