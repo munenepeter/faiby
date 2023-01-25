@@ -17,7 +17,7 @@
         <div class="p-4">
             <div class="flex justify-end mb-2">
                 @if(!$addClient)
-                <x-jet-button wire:click="addClient()" class="">
+                <x-jet-button wire:click="addClient()" class="bg-green-500">
                     Add New client
                 </x-jet-button>
                 @endif
@@ -68,7 +68,7 @@
                                 {{$client->status}}
                             </td>
                             <td class="px-6 py-4">
-                                <x-jet-secondary-button wire:click="editClient({{$client->id}})">Mark as Paid</x-jet-secondary-button>
+                                <x-jet-button wire:click="editClient({{$client->id}})">Mark as Paid</x-jet-button>
                                 <x-jet-secondary-button wire:click="editClient({{$client->id}})">Edit</x-jet-secondary-button>
                                 <x-jet-danger-button wire:click="deleteClient({{$client->id}})">Delete</x-jet-danger-button>
                             </td>

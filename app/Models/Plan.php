@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }
