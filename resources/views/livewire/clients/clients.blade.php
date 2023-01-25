@@ -36,7 +36,7 @@
                                 due date
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Amount
+                                plan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Status
@@ -63,7 +63,7 @@
                                 {{date("d F Y",strtotime('+1 month',strtotime($client->start_at)))}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->amount}}
+                                {{$client->plan}}
                             </td>
                             <td class="px-6 py-4">
                                 {{$client->status}}

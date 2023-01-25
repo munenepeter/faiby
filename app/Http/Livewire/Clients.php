@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Clients extends Component {
 
-    public $clients, $plans, $name, $email, $phone, $notes,$start_at, $amount, $clientId, $updateClient = false, $addClient = false;
+    public $clients, $plans, $name, $email, $phone, $notes,$start_at, $plan, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -24,7 +24,7 @@ class Clients extends Component {
         'name' => 'required',
         'email' => 'required', 
         'start_at' => 'required',
-        'amount' => 'required|numeric|min:0',
+        'plan' => 'required',
         'phone' => 'required|min:9|numeric',
         'notes' => 'required'
     ];
@@ -38,7 +38,7 @@ class Clients extends Component {
         $this->email = ''; 
         $this->phone = '';
         $this->start_at = '';
-        $this->amount = '';
+        $this->plan = '';
         $this->notes = '';
     }
 
@@ -73,7 +73,7 @@ class Clients extends Component {
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'start_at' => $this->start_at,
-                'amount' => $this->amount,
+                'plan' => $this->plan,
                 'notes' => $this->notes
             ]);
             session()->flash('success', 'Client Created Successfully!!');
