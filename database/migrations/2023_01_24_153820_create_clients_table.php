@@ -17,12 +17,11 @@ return new class extends Migration {
             $table->string('full_names');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('status')->default('pending');
             $table->unsignedInteger('plan_id');
             $table->foreign('plan_id')->references('id')->on('plans');
             $table->date('plan_start_at');
-            $table->date('plan_end_at')->default(
-                date("Y-m-d", strtotime('+1 month', strtotime(DB::raw('plan_start_at'))))
-            );
+            $table->date('plan_end_at');
             $table->text('notes');
             $table->timestamps();
         });

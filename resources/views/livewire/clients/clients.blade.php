@@ -58,12 +58,11 @@
                             <td class="px-6 py-4">
                                 {{$client->phone}}
                             </td>
-
                             <td class="px-6 py-4">
-                                {{date("d F Y",strtotime('+1 month',strtotime($client->plan_start_at)))}}
+                                {{$client->plan_end_at}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->plan}}
+                                {{$client->plan_id}}
                             </td>
                             <td class="px-6 py-4">
                                 {{$client->status}}

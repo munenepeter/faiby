@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Clients extends Component {
 
-    public $clients, $plans, $name, $email, $phone, $notes,$plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
+    public $clients, $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -22,7 +22,7 @@ class Clients extends Component {
      */
     protected $rules = [
         'name' => 'required',
-        'email' => 'required', 
+        'email' => 'required',
         'plan_start_at' => 'required',
         'plan' => 'required',
         'phone' => 'required|min:9|numeric',
@@ -35,7 +35,7 @@ class Clients extends Component {
      */
     public function resetFields() {
         $this->name = '';
-        $this->email = ''; 
+        $this->email = '';
         $this->phone = '';
         $this->plan_start_at = '';
         $this->plan = '';
@@ -73,6 +73,7 @@ class Clients extends Component {
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'plan_start_at' => $this->plan_start_at,
+                'plan_end_at' => date("Y-m-d", strtotime('+1 month', strtotime($this->plan_start_at))),
                 'plan_id' => $this->plan,
                 'notes' => $this->notes
             ]);
@@ -97,7 +98,7 @@ class Clients extends Component {
                 session()->flash('error', 'Client not found');
             } else {
                 $this->name = $client->name;
-                $this->email = $client->email; 
+                $this->email = $client->email;
                 $this->phone = $client->phone;
                 $this->notes = $client->notes;
                 $this->clientId = $client->id;
