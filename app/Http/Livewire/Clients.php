@@ -23,8 +23,8 @@ class Clients extends Component {
         'name' => 'required',
         'email' => 'required', 
         'start_at' => 'required',
-        'amount' => 'required',
-        'phone' => 'required',
+        'amount' => 'required|numeric|min:0',
+        'phone' => 'required|min:9|numeric',
         'notes' => 'required'
     ];
 
@@ -145,7 +145,7 @@ class Clients extends Component {
      * @return void
      */
     public function deleteClient($id) {
-        die;
+
         try {
             Client::find($id)->delete();
             session()->flash('success', "Client Deleted Successfully!!");

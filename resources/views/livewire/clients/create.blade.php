@@ -38,7 +38,7 @@
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
                     <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
-                    <x-jet-input id="phone" wire:model="phone" placeholder="Enter the phone number" class="block mt-1 w-full" type="text" name="name" :value="old('phone')" required autofocus />
+                    <x-jet-input id="phone" wire:model="phone" placeholder="7XX XXX XXX" class="block mt-1 w-full" type="tel" pattern="[0-9]{9}" name="name" :value="old('phone')" required autofocus />
                 </div>
                 
 
@@ -50,7 +50,7 @@
                 </div>
                 <div>
                     <x-jet-label for="amount" value="{{ __('Amount') }}" />
-                    <x-jet-input id="amount" wire:model="amount" placeholder="Amount that the client should pay?" class="block mt-1 w-full" type="text" name="amount" :value="old('amount')" required autofocus />
+                    <x-jet-input id="amount" wire:model="amount" placeholder="Amount that the client should pay?" class="block mt-1 w-full" type="text" name="amount" inputmode="numeric" pattern="\d*" :value="old('amount')" required autofocus />
                 </div>
 
             </div>
