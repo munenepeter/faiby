@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Plan;
 use App\Models\Client;
 use Livewire\Component;
 
 class Clients extends Component {
 
-    public $clients, $name, $email, $phone, $notes,$start_at, $amount, $clientId, $updateClient = false, $addClient = false;
+    public $clients, $plans, $name, $email, $phone, $notes,$start_at, $amount, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -47,6 +48,7 @@ class Clients extends Component {
      */
     public function render() {
         $this->clients = Client::all();
+        $this->plans = Plan::all();
         return view('livewire.clients.clients');
     }
 

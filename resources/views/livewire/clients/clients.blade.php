@@ -1,10 +1,10 @@
 <div>
     <div class="col-md-8 mb-2">
         @if(session()->has('success'))
-       {{ session()->get('success') }}
+        {{ session()->get('success') }}
         @endif
         @if(session()->has('error'))
-       {{ session()->get('error') }}
+        {{ session()->get('error') }}
         @endif
         @if($addClient)
         @include('livewire.clients.create')

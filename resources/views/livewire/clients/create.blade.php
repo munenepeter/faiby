@@ -40,7 +40,21 @@
                     <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
                     <x-jet-input id="phone" wire:model="phone" placeholder="7XX XXX XXX" class="block mt-1 w-full" type="tel" pattern="[0-9]{9}" name="name" :value="old('phone')" required autofocus />
                 </div>
-                
+                <div>
+                    <x-jet-label for="plan" value="{{ __('Plan') }}" />
+                    <select id="plan" wire:model="plan" :value="old('plan')" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Choose a plan</option>
+                        @if (count($plans) > 0)
+                        @foreach ($plans as $plan)
+                        <option value="{{ $plan->id }}"> {{ $plan->name }}</option>
+                        @endforeach
+                        @else
+                        <option selected>No plans are available!</option>
+                        @endif
+                    </select>
+
+
+                </div>
 
             </div>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
@@ -48,10 +62,7 @@
                     <x-jet-label for="start_at" value="{{ __('Subscription Start') }}" />
                     <x-jet-input id="start_at" wire:model="start_at" placeholder="Enter the phone number" class="block mt-1 w-full" type="date" name="start_at" :value="old('start_at')" required autofocus />
                 </div>
-                <div>
-                    <x-jet-label for="amount" value="{{ __('Amount') }}" />
-                    <x-jet-input id="amount" wire:model="amount" placeholder="Amount that the client should pay?" class="block mt-1 w-full" type="text" name="amount" inputmode="numeric" pattern="\d*" :value="old('amount')" required autofocus />
-                </div>
+
 
             </div>
             <div class="w-full">
