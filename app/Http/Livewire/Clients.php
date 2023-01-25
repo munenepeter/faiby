@@ -73,7 +73,7 @@ class Clients extends Component {
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'plan_start_at' => $this->plan_start_at,
-                'plan' => $this->plan,
+                'plan_id' => $this->plan,
                 'notes' => $this->notes
             ]);
             session()->flash('success', 'Client Created Successfully!!');
