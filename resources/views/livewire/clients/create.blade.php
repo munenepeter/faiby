@@ -26,7 +26,7 @@
         <form>
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <x-jet-label for="name" value="{{ __('Name') }}" />
+                    <x-jet-label for="name" value="{{ __('Full Names') }}" />
                     <x-jet-input id="name" wire:model="name" placeholder="Enter the name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
                 <div>
