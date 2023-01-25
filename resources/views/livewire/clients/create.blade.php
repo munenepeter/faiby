@@ -52,8 +52,6 @@
                         <option selected>No plans are available!</option>
                         @endif
                     </select>
-
-
                 </div>
 
             </div>
