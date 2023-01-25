@@ -33,6 +33,9 @@
                                 Phone
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                start date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 due date
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -59,6 +62,9 @@
                                 {{$client->phone}}
                             </td>
                             <td class="px-6 py-4">
+                                {{$client->plan_start_at}}
+                            </td>
+                            <td class="px-6 py-4">
                                 {{$client->plan_end_at}}
                             </td>
                             <td class="px-6 py-4">
@@ -70,7 +76,9 @@
                             <td class="px-6 py-4">
                                 <x-jet-secondary-button wire:click="editClient({{$client->id}})">Edit</x-jet-secondary-button>
                                 <x-jet-danger-button wire:click="deleteClient({{$client->id}})">Delete</x-jet-danger-button>
-                                <x-jet-button wire:click="editClient({{$client->id}})">Mark as Paid</x-jet-button>
+                                @if($client->status === 'pending')
+                                <x-jet-button wire:click="markPaid({{$client->id}})">Mark as Paid</x-jet-button>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

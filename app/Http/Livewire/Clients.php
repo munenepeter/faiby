@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\Client;
 use Livewire\Component;
@@ -118,10 +119,12 @@ class Clients extends Component {
         $this->validate();
         try {
             Client::whereId($this->clientId)->update([
-                'name' => $this->name,
+                'full_names' => $this->name,
                 'email' => $this->email,
-                'location' => $this->location,
                 'phone' => $this->phone,
+                'plan_start_at' => $this->plan_start_at,
+                'plan_end_at' => date("Y-m-d", strtotime('+1 month', strtotime($this->plan_start_at))),
+                'plan_id' => $this->plan,
                 'notes' => $this->notes
             ]);
             session()->flash('success', 'Client Updated Successfully!!');
@@ -153,6 +156,21 @@ class Clients extends Component {
             Client::find($id)->delete();
             session()->flash('success', "Client Deleted Successfully!!");
         } catch (\Exception $e) {
+            session()->flash('error', "Something goes wrong!!");
+        }
+    }
+
+    public function markPaid($id) {
+       $last_start_at = new Carbon(Client::find($id, 'plan_end_at')['plan_end_at']);
+      
+        try {
+            Client::whereId($id)->update([
+                'plan_end_at' => $last_start_at->addMonth(),
+                'status' => 'paid',
+            ]);
+            session()->flash('success', "Client Updated Successfully!!");
+        } catch (\Exception $e) {
+            throw new \Exception($e);
             session()->flash('error', "Something goes wrong!!");
         }
     }
