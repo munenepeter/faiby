@@ -62,15 +62,15 @@
                                 {{$client->plan_end_at}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->plan->name}}
+                                {{ucfirst($client->plan->name)}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->status}}
+                                {{ucfirst($client->status)}}
                             </td>
                             <td class="px-6 py-4">
-                                <x-jet-button wire:click="editClient({{$client->id}})">Mark as Paid</x-jet-button>
                                 <x-jet-secondary-button wire:click="editClient({{$client->id}})">Edit</x-jet-secondary-button>
                                 <x-jet-danger-button wire:click="deleteClient({{$client->id}})">Delete</x-jet-danger-button>
+                                <x-jet-button wire:click="editClient({{$client->id}})">Mark as Paid</x-jet-button>
                             </td>
                         </tr>
                         @endforeach
