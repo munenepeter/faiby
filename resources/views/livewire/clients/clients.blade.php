@@ -62,10 +62,14 @@
                                 {{$client->phone}}
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->plan_start_at}}
+                                {!!date("j<\s\u\p>S</\s\u\p> M Y",strtotime($client->plan_start_at))!!}
+                                <br>
+                                <span class="text-xs">(renews after 1 mon)</span>
                             </td>
                             <td class="px-6 py-4">
-                                {{$client->plan_end_at}}
+                                {!!date("j<\s\u\p>S</\s\u\p> M Y",strtotime($client->plan_end_at))!!}
+                                <br>
+                                <span class="text-xs">({{Carbon\Carbon::parse($client->plan_end_at)->diffForHumans()}})</span>
                             </td>
                             <td class="px-6 py-4">
                                 {{ucfirst($client->plan->name)}}
