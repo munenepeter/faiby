@@ -33,14 +33,12 @@
                                 Phone
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                start date
+                            plan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 due date
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                plan
-                            </th>
+                          
                             <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
@@ -61,7 +59,7 @@
                                 {{$client->phone}}
                             </td>
                             <td class="px-6 py-4">
-                                <p class="font-medium text-gray-700"> {!!date("j<\s\u\p>S</\s\u\p> M Y",strtotime($client->plan_start_at))!!}</p>
+                                <p class="font-medium text-gray-700">{{ucfirst($client->plan->name)}}</p>
                                 <p class="text-gray-400 text-xs">(renews after 1 mon)</p>
                             </td>
                             <td class="px-6 py-4">
@@ -70,9 +68,7 @@
                                 <p class="text-gray-400 text-xs">({{Carbon\Carbon::parse($client->plan_end_at)->diffForHumans()}})</p>
 
                             </td>
-                            <td class="px-6 py-4">
-                                {{ucfirst($client->plan->name)}}
-                            </td>
+                          
                             <td class="px-6 py-4">
                                 {{ucfirst($client->status)}}
                             </td>
