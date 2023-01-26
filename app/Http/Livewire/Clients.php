@@ -6,10 +6,11 @@ use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\Client;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Clients extends Component {
-
-    public $clients, $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
+    use WithPagination;
+    public  $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
 
     /**
      * delete action listener
@@ -48,9 +49,11 @@ class Clients extends Component {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function render() {
-        $this->clients = Client::all();
+      //  $this->clients = Client::all();;
         $this->plans = Plan::all();
-        return view('livewire.clients.clients');
+        return view('livewire.clients.clients',[
+            'clients' => Client::paginate(5),
+        ]);
     }
 
     /**

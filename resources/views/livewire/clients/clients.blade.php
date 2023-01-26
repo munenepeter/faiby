@@ -33,12 +33,12 @@
                                 Phone
                             </th>
                             <th scope="col" class="px-6 py-3">
-                            plan
+                                plan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 due date
                             </th>
-                          
+
                             <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($clients) > 0)
+                        @if (!empty($clients))
                         @foreach ($clients as $client)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -60,7 +60,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <p class="font-medium text-gray-700">{{ucfirst($client->plan->name)}}</p>
-                                <p class="text-gray-400 text-xs">(renews after 1 mon)</p>
+                                <p class="text-gray-400 text-xs">(renews after {{$client->plan->renew_period}} mon)</p>
                             </td>
                             <td class="px-6 py-4">
 
@@ -68,7 +68,7 @@
                                 <p class="text-gray-400 text-xs">({{Carbon\Carbon::parse($client->plan_end_at)->diffForHumans()}})</p>
 
                             </td>
-                          
+
                             <td class="px-6 py-4">
                                 {{ucfirst($client->status)}}
                             </td>
@@ -89,6 +89,11 @@
                             </td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td class="px-6 py-4" colspan="6">
+                                {{ $clients->links() }}
+                            </td>
+                        </tr>
                         @else
                         <tr>
                             <td class="px-6 py-4" colspan="6" align="center">
