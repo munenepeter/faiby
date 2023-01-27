@@ -53,7 +53,7 @@ class Clients extends Component {
         //  $this->clients = Client::all();;
         $this->plans = Plan::all();
         return view('livewire.clients.clients', [
-            'clients' => Client::paginate(5),
+            'clients' => Client::latest()->paginate(5),
         ]);
     }
 

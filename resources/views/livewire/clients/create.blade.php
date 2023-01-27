@@ -42,14 +42,14 @@
                 </div>
                 <div>
                     <x-jet-label for="plan" value="{{ __('Plan') }}" />
-                    <select id="plan" wire:model="plan" :value="old('plan')" required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose a plan</option>
+                    <select id="plan" wire:model="plan"  required autofocus class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>Choose a plan</option>
                         @if (count($plans) > 0)
                         @foreach ($plans as $plan)
-                        <option value="{{ $plan->id }}"> {{ $plan->name }}</option>
+                        <option value="{{ $plan->id }}"> {{ ucfirst($plan->name) }}</option>
                         @endforeach
                         @else
-                        <option selected>No plans are available!</option>
+                        <option>No plans are available!</option>
                         @endif
                     </select>
                 </div>
