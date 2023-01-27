@@ -37,5 +37,9 @@ Route::middleware([
         Route::get('/plans', function () {
             return view('plans');
         })->name('plans');
+
+        Route::get('/payments', function () {
+            return view('payments');
+        })->name('payments');
     });
 });
