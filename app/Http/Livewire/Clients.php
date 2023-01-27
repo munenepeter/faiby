@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\Client;
+use App\Models\Payment;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -49,9 +50,9 @@ class Clients extends Component {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function render() {
-      //  $this->clients = Client::all();;
+        //  $this->clients = Client::all();;
         $this->plans = Plan::all();
-        return view('livewire.clients.clients',[
+        return view('livewire.clients.clients', [
             'clients' => Client::paginate(5),
         ]);
     }
@@ -164,12 +165,18 @@ class Clients extends Component {
     }
 
     public function markPaid($id) {
-       $last_start_at = new Carbon(Client::find($id, 'plan_end_at')['plan_end_at']);
-      
+        $client = Client::findOrFail($id);
+        $last_start_at = new Carbon($client->plan_end_at);
+        $last_start_at1 = new Carbon($client->plan_end_at);
         try {
             Client::whereId($id)->update([
                 'plan_end_at' => $last_start_at->addMonth(),
                 'status' => 'paid',
+            ]);
+            Payment::create([
+                'period' => $last_start_at1->subMonth()->format('jS M Y') . ' - ' . date('jS M Y', strtotime($client->plan_end_at)),
+                'amount' => $client->plan->amount,
+                'client_id' => $client->id,
             ]);
             session()->flash('success', "Client Updated Successfully!!");
         } catch (\Exception $e) {
