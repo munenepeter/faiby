@@ -4,7 +4,10 @@
     @endfor
     </div>
     <div class="p-8 bg-green-200 text-blue-800 grid grid-cols-4 gap-2">
-        @for($i=1; $i<=12; $i++) <div class="bg-blue-100 rounded p-5">{{date('M Y', mktime(0,0,0,$i, 1, date('Y')))}}</div>
-    @endfor
+        @foreach($payments as $payment)
+        <div class="bg-blue-100 rounded p-5">
+            {{$payment->period}}
+        </div>
+        @endforeach
     </div>
 </section>
