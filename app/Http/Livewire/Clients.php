@@ -11,8 +11,7 @@ use Livewire\WithPagination;
 
 class Clients extends Component {
     use WithPagination;
-    public  $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false;
-
+    public  $plans, $name, $email, $phone, $notes, $plan_start_at, $plan, $clientId, $updateClient = false, $addClient = false, $viewClient = false;
     /**
      * delete action listener
      */
@@ -102,7 +101,7 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-                $this->name = $client->name;
+                $this->name = $client->full_names;
                 $this->email = $client->email;
                 $this->phone = $client->phone;
                 $this->notes = $client->notes;
@@ -147,6 +146,31 @@ class Clients extends Component {
         $this->addClient = false;
         $this->updateClient = false;
         $this->resetFields();
+    }
+
+      /**
+     * show existing client data in edit client form
+     * @param mixed $id
+     * @return void
+     */
+    public function viewClient($id) {
+        try {
+            $client = Client::findOrFail($id);
+            if (!$client) {
+                session()->flash('error', 'Client not found');
+            } else {
+                $this->name = $client->name;
+                $this->email = $client->email;
+                $this->phone = $client->phone;
+                $this->notes = $client->notes;
+                $this->clientId = $client->id;
+                $this->updateClient = false;
+                $this->addClient = false;
+                $this->viewClient = true;
+            }
+        } catch (\Exception $ex) {
+            session()->flash('error', 'Something goes wrong!!');
+        }
     }
 
     /**
