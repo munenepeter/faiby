@@ -23,7 +23,7 @@
     </x-slot>
 
     <x-slot name="content">
-     {{$notes}}
+     {{$name}}
      {{$email}}
     </x-slot>
 

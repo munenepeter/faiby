@@ -95,12 +95,12 @@ class Clients extends Component {
      * @param mixed $id
      * @return void
      */
-    public function editClient($id) {
+    public function editClient($id) { 
         try {
-            $client = Client::findOrFail($id);
+            $client = Client::findOrFail($id);    
             if (!$client) {
                 session()->flash('error', 'Client not found');
-            } else {
+            } else {             
                 $this->name = $client->full_names;
                 $this->email = $client->email;
                 $this->phone = $client->phone;
@@ -159,7 +159,7 @@ class Clients extends Component {
             if (!$client) {
                 session()->flash('error', 'Client not found');
             } else {
-                $this->name = $client->name;
+                $this->name = $client->full_names;
                 $this->email = $client->email;
                 $this->phone = $client->phone;
                 $this->notes = $client->notes;
